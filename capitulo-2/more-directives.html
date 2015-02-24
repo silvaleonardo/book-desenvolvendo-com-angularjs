@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="notesApp">
+<head>
+  <meta charset="utf-8">
+  <title>More Directives</title>
+
+  <style>
+    .done {
+      background-color: green;
+    }
+
+    .pending {
+      background-color: red;
+    }
+  </style>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+  <div ng-repeat="note in ctrl.notes" ng-class="ctrl.getNoteClass(note.done)">
+    <span class="label">{{note.label}}</span>
+    <span class="assignee" ng-show="note.assignee" ng-bind="note.assignee"></span>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script>
+    angular.module('notesApp', [])
+           .controller('MainCtrl', [function() {
+            var self = this;
+            self.notes = [
+              {label: 'First Note', done: false, assignee: 'Shyam'},
+              {label: 'Second Note', done: false},
+              {label: 'Done Note', done: true},
+              {label: 'Last Note', done: false, assignee: 'Brad'}
+            ];
+
+            self.getNoteClass = function(status) {
+              return {
+                done: status,
+                pending: !status
+              };
+            };
+           }]);
+  </script>
+</body>
+</html>
