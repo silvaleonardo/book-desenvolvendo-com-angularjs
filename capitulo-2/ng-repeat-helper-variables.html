@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="notesApp">
+<head>
+  <meta charset="utf-8">
+  <title>Ng-repeat Helper Variables</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+  <div ng-repeat="note in ctrl.notes">
+    <div>First Element: {{$first}}</div>
+    <div>Middle Element: {{$middle}}</div>
+    <div>Last Element: {{$last}}</div>
+    <div>Index of Element: {{$index}}</div>
+    <div>At Even Position: {{$even}}</div>
+    <div>At Odd Position: {{$odd}}</div>
+
+    <span class="label"> {{note.label}}</span>
+    <span class="status" ng-bind="note.done"></span>
+    <br/><br/>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script>
+    angular.module('notesApp', [])
+           .controller('MainCtrl', [function() {
+            var self = this;
+            self.notes = [
+              {id: 1, label: 'First Note', done: false},
+              {id: 2, label: 'Second Note', done: false},
+              {id: 3, label: 'Done Note', done: true},
+              {id: 4, label: 'Last Note', done: false}
+            ];
+           }]);
+  </script>
+</body>
+</html>
