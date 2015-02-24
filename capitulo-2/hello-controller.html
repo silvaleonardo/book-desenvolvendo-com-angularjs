@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="notesApp">
+<head>
+  <meta charset="utf-8">
+  <title>Hello Controller</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+  {{ctrl.helloMsg}} AngularJS.
+  <br/>
+  {{ctrl.goodbyeMsg}} AngularJS.
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script>
+    angular.module('notesApp', [])
+           .controller('MainCtrl', [function() {
+            this.helloMsg = 'Hello';
+            var goodbyeMsg = 'Goodbye';
+           }]);
+  </script>
+</body>
+</html>
