@@ -6,4 +6,4 @@ Ambiente de estudos para o livro:
 - Autores: Shyam Seshadri e Brad Green (O'Reilly).
 
 
-0/350
+19/350
