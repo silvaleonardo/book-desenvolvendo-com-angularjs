@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="notesApp">
+<head>
+  <meta charset="utf-8">
+  <title>Ng-repeat Across Elements</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+  <table>
+    <tr ng-repeat-start="note in ctrl.notes">
+      <td>{{note.label}}</td>
+    </tr>
+    <tr ng-repeat-end>
+      <td>Done: {{note.done}}</td>
+    </tr>
+  </table>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script>
+    angular.module('notesApp', [])
+           .controller('MainCtrl', [function() {
+            var self = this;
+            self.notes = [
+              {id: 1, label: 'First Note', done: false},
+              {id: 2, label: 'Second Note', done: false},
+              {id: 3, label: 'Finished Note', done: true}
+            ];
+          }]);
+  </script>
+</body>
+</html>
