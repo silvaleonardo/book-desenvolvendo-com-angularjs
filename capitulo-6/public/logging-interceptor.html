@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="notesApp">
+<head>
+  <meta charset="utf-8">
+  <title>Logging Interceptor</title>
+
+  <style>
+    .item {
+      padding: 10px;
+    }
+  </style>
+</head>
+<body ng-controller="MainCtrl as mainCtrl">
+  <h1>Hello Interceptors!</h1>
+  <div ng-repeat="todo in mainCtrl.items" class="item">
+    <div><span ng-bind="todo.label"></span></div>
+    <div>- by <span ng-bind="todo.author"></span></div>
+  </div>
+  <div>
+    <form name="addForm" ng-submit="mainCtrl.add()">
+      <input type="text" placeholder="Label" ng-model="mainCtrl.newTodo.label" required>
+      <input type="text" placeholder="Author" ng-model="mainCtrl.newTodo.author" required>
+      <input type="submit" value="Add" ng-disabled="addForm.$invalid">
+    </form>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script src="logging-interceptor.js"></script>
+</body>
+</html>
