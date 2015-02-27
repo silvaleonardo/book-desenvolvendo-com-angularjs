@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="notesApp">
+<head>
+  <meta charset="utf-8">
+  <title>HTTP Defaults</title>
+</head>
+<body ng-controller="LoginCtrl as loginCtrl">
+  <h1>Hello Defaults!</h1>
+  <div>
+    <div ng-bind="loginCtrl.message"></div>
+    <form name="loginForm" ng-submit="loginCtrl.login()">
+      <input type="text" placeholder="Username" ng-model="loginCtrl.user.username" required>
+      <input type="password" placeholder="Password" ng-model="loginCtrl.user.password" required>
+      <input type="submit" value="Login" ng-disabled="loginForm.$invalid">
+    </form>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script src="http-defaults.js"></script>
+</body>
+</html>
