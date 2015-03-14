@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Custom Filters</title>
+</head>
+<body ng-app="filtersApp">
+  <div ng-controller="FilterCtrl as ctrl">
+    <div>
+      Start Time (Timestamp): {{ctrl.startTime}}
+    </div>
+    <div>
+      Start Time (DateTime): {{ctrl.startTime | date:'medium'}}
+    </div>
+    <div>
+      Start Time (Our filter): {{ctrl.startTime | timeAgo}}
+    </div>
+
+    <div>
+      someTimeAgo : {{ctrl.someTimeAgo | date:'short'}}
+    </div>
+    <div>
+      someTimeAgo (Our filter): {{ctrl.someTimeAgo | timeAgo}}
+    </div>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.js"></script>
+  <script>
+  angular.module('filtersApp', [])
+         .controller('FilterCtrl',[function() {
+          this.startTime = new Date().getTime();
+          this.someTimeAgo = new Date().getTime() - (1000 * 60 * 60 * 4);
+         }])
+         .filter('timeAgo', [function() {
+          var ONE_MINUTE = 1000 * 60;
+          var ONE_HOUR = ONE_MINUTE * 60;
+          var ONE_DAY = ONE_HOUR * 24;
+          var ONE_MONTH = ONE_DAY * 30;
+          return function(ts) {
+            var currentTime = new Date().getTime();
+            var diff = currentTime - ts;
+            if (diff < ONE_MINUTE) {
+              return 'seconds ago';
+            } else if (diff < ONE_HOUR) {
+              return 'minutes ago';
+            } else if (diff < ONE_DAY) {
+              return 'hours ago';
+            } else if (diff < ONE_MONTH) {
+              return 'days ago';
+            } else {
+              return 'months ago';
+            }
+          };
+         }]);
+  </script>
+</body>
+</html>
