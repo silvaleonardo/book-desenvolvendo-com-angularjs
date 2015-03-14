@@ -1,0 +1,9 @@
+{
+  "name": "ajs-up-running-chapter-9",
+  "version": "0.0.1",
+  "devDependencies": {
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.5"
+  }
+}
