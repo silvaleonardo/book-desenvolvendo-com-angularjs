@@ -2,15 +2,13 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>Directive Transclusion</title>
+  <title>Directive Advanced Transclusion</title>
 </head>
 <body ng-app="stockMarketApp">
   <div ng-controller="MainCtrl as mainCtrl">
     <h3>List of Stocks</h3>
-    <div ng-repeat="s in mainCtrl.stocks">
-      <div stock-widget stock-data="s">
-        This content will be blown away
-      </div>
+    <div simple-stock-repeat="mainCtrl.stocks">
+      We found {{stock.name}} at {{currentIndex}}
     </div>
   </div>
 
